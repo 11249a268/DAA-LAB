@@ -1,58 +1,54 @@
-Aim: To search for a given element in an array using Linear Search (Recursion) and measure the execution time.
+Aim:
+To search an element in an array using the recursive linear search method.
 
-Algorithm: LINEAR_SEARCH(arr, begin, stop, key)
+Algorithm:
 
-Start
-If begin == stop then
-  Print "Element not found" and return
-If arr[begin] == key then
-  Print "Element found at position begin+1" and return
-Else
-  Call LINEAR_SEARCH(arr, begin+1, stop, key)
-Stop
+Start the program.
+Read the number of elements in the array.
+Read the array elements.
+Read the element to be searched.
+Compare the current element with the key.
+If the element matches, return its position.
+Otherwise, call the function recursively for the next element.
+If the end of the array is reached, return -1.
+Display whether the element is found or not.
+Stop the program.
 
-Program:
+Code (C Program):
 
 #include <stdio.h>
-#include <time.h>
-#include <stdlib.h>
 
-void ls(int a[], int begin, int stop, int search)
-{
-    if (begin == stop)
-        printf("Element not found\n");
-    else if (a[begin] == search)
-        printf("Element found at position %d\n", begin + 1);
-    else
-        ls(a, begin + 1, stop, search);
+int linearSearch(int arr[], int n, int key, int index) {
+    if (index >= n)
+        return -1;
+    if (arr[index] == key)
+        return index;
+    return linearSearch(arr, n, key, index + 1);
 }
 
-int main()
-{
-    int a[10000], n = 10000, key, i;
-    clock_t start, end;
+int main() {
+    int arr[100], n, key, result, i;
 
-    // Generate random elements
-    for (i = 0; i < n; i++)
-        a[i] = rand() % 1000;
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
 
-    key = rand() % 1000;
+    printf("Enter array elements:\n");
+    for(i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
 
-    printf("Searching for element: %d\n", key);
+    printf("Enter element to search: ");
+    scanf("%d", &key);
 
-    start = clock();
+    result = linearSearch(arr, n, key, 0);
 
-    ls(a, 0, n, key);
-
-    end = clock();
-
-    double time_taken = ((double)(end - start)) / CLOCKS_PER_SEC;
-
-    printf("Total time taken: %lf seconds\n", time_taken);
+    if(result == -1)
+        printf("Element not found");
+    else
+        printf("Element found at position %d", result + 1);
 
     return 0;
 }
 
-
-
-Result: Thus, the element is searched successfully using Linear Search (Recursion), and execution time is calculated.
+Result:
+Thus, the element is successfully searched in the array using the recursive linear search method.
