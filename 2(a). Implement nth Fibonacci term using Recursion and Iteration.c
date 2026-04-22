@@ -48,3 +48,4 @@ int main() {
     printf("Iterative Fibonacci: %d\n", fib_iter(n)); 
     return 0; 
 }
+Result:Thus, the Fibonacci series is successfully generated using both recursion and iteration methods.
