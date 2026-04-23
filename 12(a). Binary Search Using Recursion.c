@@ -55,8 +55,9 @@ int main() {
         printf("Element found at position %d", result + 1);
 
     return 0;
+    }
     Result:
 Thus, the element is successfully searched in the sorted array using the recursive binary search method.
-}
+
 
   
